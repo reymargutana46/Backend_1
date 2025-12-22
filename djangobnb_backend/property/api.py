@@ -9,14 +9,6 @@ from .serializers import PropertiesListSerializer, PropertyDetailSerializer, Res
 from useraccount.models import User
 
 
-<<<<<<< HEAD
-=======
-from .forms import PropertyForm
-from .models import Property, Reservation
-from .serializers import PropertiesListSerializer, PropertyDetailSerializer, ReservationsListSerializer
-
-
->>>>>>> 45aaddc (Book property and Land lord page dynamic - Gutana, Reymar C.)
 
 @api_view(['GET'])
 @authentication_classes([])
@@ -49,7 +41,6 @@ def properties_list(request):
         properties = properties.filter(landlord_id=landlord_id)
 
     #
-<<<<<<< HEAD
     #Favorites
 
     if user:
@@ -57,19 +48,12 @@ def properties_list(request):
             if user in property.favorited.all():
                 favorites.append(property.id)
 
-=======
-    #
->>>>>>> 45aaddc (Book property and Land lord page dynamic - Gutana, Reymar C.)
     #
     serializer = PropertiesListSerializer(properties, many=True)
 
     return JsonResponse({
-<<<<<<< HEAD
         'data': serializer.data,
         'favorite': favorites
-=======
-        'data': serializer.data
->>>>>>> 45aaddc (Book property and Land lord page dynamic - Gutana, Reymar C.)
     })
 
 @api_view(['GET'])
@@ -134,7 +118,6 @@ def book_property(request, pk):
         print('error', e)
 
         return JsonResponse({'success': False})
-<<<<<<< HEAD
 
 
 @api_view(['POST'])
@@ -149,6 +132,3 @@ def toggle_favorite(request, pk):
         property.favorited.add(request.user)
 
         return JsonResponse({'is_favorite': True})
-=======
-        
->>>>>>> 45aaddc (Book property and Land lord page dynamic - Gutana, Reymar C.)
